@@ -18,7 +18,7 @@ def  get_oracle_db_info(url):
     soup = BeautifulSoup(r.text, 'html.parser')
 
     # Regex to grab every entry that looks like a version number.
-    regex = ".*(.+[.]\d+[.]\d+[.]\d+[.]\d.+).*"
+    regex = ".*(.+[\d+'.']{4}\d.+).*"
     results = soup.find_all(text=re.compile(regex))
 
     if results:  
